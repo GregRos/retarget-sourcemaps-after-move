@@ -1,24 +1,21 @@
 {
   "name": "fix-sourcemaps-after-move",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A script for fixing source map paths after moving around code files for publishing.",
   "main": "index.js",
   "license": "MIT",
+  "repository": "https://github.com/GregRos/fix-sourcemaps-after-move",
   "scripts": {
 	"build": "rm -rf dist && tsc"
   },
   "dependencies": {
     "esprima": "^4.0.1",
-    "execa": "^1.0.0",
     "globby": "^8.0.1",
     "lodash": "^4.17.11",
     "mz": "^2.7.0",
     "shelljs": "^0.8.3",
     "source-map": "^0.7.3",
-    "source-map-resolve": "^0.5.2",
-    "source-map-support": "^0.5.12",
-    "source-map-url": "^0.4.0",
-    "typed-promisify": "^0.4.0"
+    "source-map-support": "^0.5.12"
   },
   "devDependencies": {
     "@types/esprima": "^4.0.2",
