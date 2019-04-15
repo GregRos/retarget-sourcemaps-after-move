@@ -5,21 +5,21 @@ Say you're writing a JS project with fairly complex directory structure, `src` a
 ```
 root
 |- src
-	|- lib
-		|- index.ts
-		|- advanced.ts
-	|- test
-		|...
+    |- lib
+        |- index.ts
+        |- advanced.ts
+    |- test
+        |...
 |- dist
-	|- lib
-		|- index.js
-		|- index.js.map
-		|- index.d.ts
-		|- advanced.js
-		|- advanced.js.map
-		|- advanced.d.ts
-	|- test
-		|...
+    |- lib
+        |- index.js
+        |- index.js.map
+        |- index.d.ts
+        |- advanced.js
+        |- advanced.js.map
+        |- advanced.d.ts
+    |- test
+        |...
 |- package.json
 |- readme.md
 |- .gitignore
@@ -65,9 +65,9 @@ One solution to this would be to just move files around during the publish step 
 |- readme.md
 |- package.json
 |- src
-	|- lib
-		|- index.ts
-		|...
+    |- lib
+        |- index.ts
+        |...
 ```
 
 Simple enough, but the problem is the source maps. If you change the directory structure, the source maps will be all wrong and won't work properly. 
