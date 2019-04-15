@@ -70,5 +70,5 @@ One solution to this would be to just move files around during the publish step 
 		|...
 ```
 
-Simple enough, but the problem is the source maps. If you change the directory structure, the source maps will be all wrong and won't work properly. Also, 
+Simple enough, but the problem is the source maps. If you change the directory structure, the source maps will be all wrong and won't work properly. 
 
