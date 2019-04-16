@@ -1,9 +1,14 @@
 {
-  "name": "fix-sourcemaps-after-move",
-  "version": "0.0.3",
+  "name": "retarget-sourcemaps-after-move",
+  "version": "0.0.1",
   "description": "A script for fixing source map paths after moving around code files for publishing.",
   "main": "index.js",
   "license": "MIT",
+  "keywords": [
+	"sourcemap",
+	"retarget",
+	"folders"
+  ],
   "repository": "https://github.com/GregRos/fix-sourcemaps-after-move",
   "scripts": {
 	"build": "rm -rf dist && tsc"
