@@ -1,9 +1,10 @@
-# Retarget-source-maps
+# retarget-source-maps
 
-Say you're writing a JS project with fairly complex directory structure, `src` and `dist` folders, and source maps. For example:
+This is script meant as a post-build or pre-publish step. It's used to retarget sourcemap files after the dist and src folder structure has been changed, correcting the links between the two.
+
+You can use it if your project folder looks like this:
 
 ```
-root
 |- src
     |- lib
         |- index.ts
@@ -27,33 +28,7 @@ root
 |...
 ```
 
-You want users to be able to easily access your package in spite of its complex directory structure. You don't want them to do this:
-
-```javascript
-const awesomePackage = require("awesome-package/dist/lib");
-```
-
-You want them to do this:
-
-```js
-const awesomePackage = require("awesome-package");
-```
-
-So you set up your `package.json` with:
-
-```js
-main: "dist/lib/index.js"
-```
-
-This solves the above problem. But if you have an internal module like `advanced.js` that you want to be user-accessible, users will still need to access it like this:
-
-```js
-const pkgawesomePackage= require("awesome-package/dist/lib/advanced");
-```
-
-Which seems pretty ugly.
-
-One solution to this would be to just move files around during the publish step to transform the package into something like this:
+But you want to publish your package as this:
 
 ```
 |- index.js
@@ -70,5 +45,10 @@ One solution to this would be to just move files around during the publish step 
         |...
 ```
 
-Simple enough, but the problem is the source maps. If you change the directory structure, the source maps will be all wrong and won't work properly. 
+This script doesn't actually move files around; it assumes you did that part already. All it does is go over `.js.map` files  and `//# sourcMappingURL` comments in JS files and fixes them based on the new folder structure.
 
+Some things it doesn't support right now:
+
+1. Inline source-maps.
+2. `//# sourceURL` comments.
+3. Separate map file folders. It assumes all map files are kept in the same folder as the dist file.
