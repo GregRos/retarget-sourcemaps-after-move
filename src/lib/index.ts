@@ -1,2 +1,2 @@
-export {fixSourcemaps} from "./post-fix";
+export {retargetSourcemaps} from "./retarget-sourcemaps";
 

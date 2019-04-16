@@ -32,7 +32,7 @@ function extractSourceMappingComment(js: string) {
     return {src: newJs, sm: _.trim(value, "# \r\n\t").replace(/sourceMappingUrl=/ig, "")};
 }
 
-export function fixSourcemaps(cfg: Config) {
+export function retargetSourcemaps(cfg: Config) {
 
     let newDistFiles = globby.sync(cfg.distGlob, {
         cwd: cfg.newDistRoot,

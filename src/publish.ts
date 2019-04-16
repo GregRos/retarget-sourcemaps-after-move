@@ -1,5 +1,5 @@
 import * as path from "path";
-import {fixSourcemaps} from "./lib";
+import {retargetSourcemaps} from "./lib";
 import shjs = require("shelljs")
 let srcRoot = path.resolve("src/lib");
 
@@ -14,7 +14,7 @@ shjs.cp("-r", [
 
 shjs.cp("-r", "dist/lib/.", pubDir);
 shjs.cp("-r", "src/lib/.", path.join(pubDir, "src"));
-fixSourcemaps({
+retargetSourcemaps({
     newDistRoot: path.resolve(pubDir),
     distGlob: "**/*.js",
     origDistRoot: path.resolve("dist/lib"),
