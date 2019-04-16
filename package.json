@@ -5,13 +5,13 @@
   "main": "index.js",
   "license": "MIT",
   "keywords": [
-	"sourcemap",
-	"retarget",
-	"folders"
+    "sourcemap",
+    "retarget",
+    "folders"
   ],
   "repository": "https://github.com/GregRos/fix-sourcemaps-after-move",
   "scripts": {
-	"build": "rm -rf dist && tsc"
+    "build": "rm -rf dist && tsc"
   },
   "dependencies": {
     "esprima": "^4.0.1",
@@ -30,6 +30,7 @@
     "@types/shelljs": "^0.8.1",
     "@types/source-map": "^0.5.7",
     "tslint": "^5.12.0",
+    "tslint-config-gregros": "^1.0.0",
     "tslint-consistent-codestyle": "^1.15.0",
     "tslint-eslint-rules": "^5.4.0",
     "typescript": "^3.2.2"

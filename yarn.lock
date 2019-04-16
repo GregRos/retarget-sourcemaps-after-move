@@ -1176,6 +1176,11 @@ tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
   integrity sha512-4krF8scpejhaOgqzBEcGM7yDIEfi0/8+8zDRZhNZZ2kjmHJ4hv3zCbQWxoJGz1iw5U0Jl0nma13xzHXcncMavQ==
 
+tslint-config-gregros@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/tslint-config-gregros/-/tslint-config-gregros-1.0.0.tgz#81668b659c86860b622aa6ec00b622da24a4762f"
+  integrity sha512-5/EeIXoq7EbLa+WFyf1usik0BQY2xnXh5SqcbSOM62afijFTZXdoWuHimf3+Gqz8aZaffZcShBH0sUkGOaYhtg==
+
 tslint-consistent-codestyle@^1.15.0:
   version "1.15.0"
   resolved "https://registry.yarnpkg.com/tslint-consistent-codestyle/-/tslint-consistent-codestyle-1.15.0.tgz#a3acf8d0a3ca0dc7d1285705102ba1fe4a17c4cb"
