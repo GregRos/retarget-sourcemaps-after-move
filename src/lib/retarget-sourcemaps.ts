@@ -46,7 +46,7 @@ export function retargetSourcemaps(cfg: Config) {
     cfg = _.cloneDeep(cfg);
     resolvePaths(cfg.distRoot);
     resolvePaths(cfg.srcRoot);
-    let newDistFiles = globby.sync([cfg.distGlob, `!${cfg.srcRoot.new}`], {
+    let newDistFiles = globby.sync([cfg.distGlob, `!${cfg.srcRoot.new}/**/*`], {
         cwd: cfg.distRoot.new,
         absolute: true
     });
