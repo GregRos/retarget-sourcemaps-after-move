@@ -11,11 +11,15 @@ function shs(str: string): ShellString {
 }
 
 export interface Config {
-    newDistRoot: string;
-    distGlob: string | string[];
-    origDistRoot: string;
-    srcRoot: string;
-    newSourceFile(old: string): string;
+    distGlob: string;
+    distRoot: {
+        old: string;
+        new: string;
+    };
+    srcRoot: {
+        old: string;
+        new: string;
+    };
 }
 
 function extractSourceMappingComment(js: string) {
@@ -32,19 +36,27 @@ function extractSourceMappingComment(js: string) {
     return {src: newJs, sm: _.trim(value, "# \r\n\t").replace(/sourceMappingUrl=/ig, "")};
 }
 
-export function retargetSourcemaps(cfg: Config) {
+function resolvePaths(obj: Record<string, string>) {
+    _.forIn(obj, (v, k) => {
+        obj[k] = path.resolve(v);
+    });
+}
 
-    let newDistFiles = globby.sync(cfg.distGlob, {
-        cwd: cfg.newDistRoot,
+export function retargetSourcemaps(cfg: Config) {
+    cfg = _.cloneDeep(cfg);
+    resolvePaths(cfg.distRoot);
+    resolvePaths(cfg.srcRoot);
+    let newDistFiles = globby.sync([cfg.distGlob, `!${cfg.srcRoot.new}`], {
+        cwd: cfg.distRoot.new,
         absolute: true
     });
 
     for (let curDistFile of newDistFiles) {
         let curDistFileDir = path.dirname(curDistFile);
 
-        let relDistPath = path.relative(cfg.newDistRoot, curDistFile);
+        let relDistPath = path.relative(cfg.distRoot.new, curDistFile);
 
-        let origDistFile = path.join(cfg.origDistRoot, relDistPath);
+        let origDistFile = path.join(cfg.distRoot.old, relDistPath);
         let origDistDir = path.dirname(origDistFile);
 
         let origDistContent = shjs.cat(origDistFile);
@@ -55,8 +67,10 @@ export function retargetSourcemaps(cfg: Config) {
         let origSourceMap = JSON.parse(origSourceMapContent.toString());
 
         origSourceMap.sources = origSourceMap.sources.map(origSourceFile => {
-            let newSourceFile = cfg.newSourceFile(path.join(origDistDir, origSourceFile));
-            let relNewSourceFile = path.relative(curDistFileDir, newSourceFile);
+            let origSourcePath = path.join(origDistDir, origSourceFile);
+            let origRelSourcePath = path.relative(cfg.srcRoot.old, origSourcePath);
+            let newSourcePath = path.join(cfg.srcRoot.new, origRelSourcePath);
+            let relNewSourceFile = path.relative(curDistFileDir, newSourcePath);
             return relNewSourceFile;
         });
         let newSourceMapContent = JSON.stringify(origSourceMap);
@@ -65,7 +79,7 @@ export function retargetSourcemaps(cfg: Config) {
         newDistContent = out.src;
         var newSourceMapFile = path.resolve(curDistFileDir, out.sm);
         newDistContent += `\n//# sourceMappingURL=${out.sm}`;
-        shs(newDistContent).to(curDistFile)
-        shs(newSourceMapContent).to(newSourceMapFile)
+        shs(newDistContent).to(curDistFile);
+        shs(newSourceMapContent).to(newSourceMapFile);
     }
 }
