@@ -1,6 +1,6 @@
 {
   "name": "retarget-sourcemaps-after-move",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A script for fixing source map paths after moving around code files for publishing.",
   "main": "index.js",
   "license": "MIT",
@@ -15,8 +15,8 @@
   },
   "dependencies": {
     "esprima": "^4.0.1",
-    "globby": "^8.0.1",
-    "lodash": "^4.17.11",
+    "globby": "^10.0.1",
+    "lodash": "^4.17.15",
     "mz": "^2.7.0",
     "shelljs": "^0.8.3",
     "source-map": "^0.7.3",
@@ -24,12 +24,12 @@
   },
   "devDependencies": {
     "@types/esprima": "^4.0.2",
-    "@types/globby": "^8.0.0",
+    "@types/globby": "^9.1.0",
     "@types/lodash": "^4.14.119",
     "@types/mz": "^0.0.32",
     "@types/shelljs": "^0.8.1",
     "@types/source-map": "^0.5.7",
-    "tslint": "^5.12.0",
+    "tslint": "^5.20.1",
     "tslint-config-gregros": "^1.0.0",
     "tslint-consistent-codestyle": "^1.15.0",
     "tslint-eslint-rules": "^5.4.0",
