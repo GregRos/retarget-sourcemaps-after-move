@@ -1,4 +1,3 @@
-import "source-map-support/register";
 import globby = require("globby");
 import * as path from "path";
 import shjs = require("shelljs")
