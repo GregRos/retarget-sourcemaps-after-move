@@ -11,7 +11,8 @@
   ],
   "repository": "https://github.com/GregRos/fix-sourcemaps-after-move",
   "scripts": {
-    "build": "rm -rf dist && tsc"
+    "build": "rm -rf dist && tsc",
+	"do-publish": "yarn run build && node dist/publish.js && (cd .tmp/publish; yarn publish)"
   },
   "dependencies": {
     "esprima": "^4.0.1",
