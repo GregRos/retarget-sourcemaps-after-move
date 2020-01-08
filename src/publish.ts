@@ -3,7 +3,7 @@ import {retargetSourcemaps} from "./lib";
 import shjs = require("shelljs")
 let srcRoot = path.resolve("src/lib");
 
-let pubDir = ".tmp/publish";
+let pubDir = ".publish";
 
 shjs.rm("-rf", pubDir);
 shjs.mkdir("-p", pubDir);
